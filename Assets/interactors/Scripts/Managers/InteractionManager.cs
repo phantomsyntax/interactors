@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,8 +8,8 @@ public class InteractionManager : MonoBehaviour
     public UnityEvent OnGameOver;
     public UnityEvent OnSwitchActivate;
     // Counter
-    private int totalClickCount = 0;
-    private bool isGameOver = false;
+    private int _totalClickCount = 0;
+    private bool _isGameOver = false;
     // Singleton Instance
     public static InteractionManager Instance;
 
@@ -34,23 +32,23 @@ public class InteractionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isGameOver && totalClickCount == 10) {
-            isGameOver = true;
+        if(!_isGameOver && _totalClickCount == 10) {
+            _isGameOver = true;
             HandleOnGameOver();
         }
     }
 
     private void HandleOnButtonClick() {
-        totalClickCount++;
+        _totalClickCount++;
     }
 
     private void HandleOnSwitchActivate() {
-        totalClickCount++;
+        _totalClickCount++;
     }
 
     private void HandleOnGameOver() {
-        totalClickCount = 0;
-        isGameOver = false;
+        _totalClickCount = 0;
+        _isGameOver = false;
         OnGameOver?.Invoke();
     }
 }

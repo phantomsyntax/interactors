@@ -1,25 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject continueMenu;
+    [SerializeField] private GameObject _continueMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         // Continue Menu
-        if(!continueMenu) {
-            continueMenu = GameObject.Find("ContinueMenu");
+        if(!_continueMenu) {
+            _continueMenu = GameObject.Find("ContinueMenu");
         }
-        continueMenu.SetActive(false);
+        _continueMenu.SetActive(false);
 
         // Events
         InteractionManager.Instance.OnGameOver.AddListener(HandleOnGameOver);
     }
 
     private void HandleOnGameOver() {
-        continueMenu.SetActive(true);
+        _continueMenu.SetActive(true);
     }
 }
