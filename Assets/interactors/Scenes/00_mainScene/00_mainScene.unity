@@ -399,8 +399,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1942167873}
     m_Modifications:
+    - target: {fileID: 1967977441523037376, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967977441523037376, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967977441523037376, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5fed1780986bf48cb91c3f3be12ac250, type: 3}
+    - target: {fileID: 1967977441523037376, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3059578930195449668, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
       propertyPath: buttonData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f52d1c0049324cffb6a7b69dad7b6b4, type: 2}
+    - target: {fileID: 3059578930195449668, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
+      propertyPath: _buttonData
       value: 
       objectReference: {fileID: 11400000, guid: 5f52d1c0049324cffb6a7b69dad7b6b4, type: 2}
     - target: {fileID: 3059578930195449668, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
@@ -408,7 +428,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1760274975}
     - target: {fileID: 3059578930195449668, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
+      propertyPath: _buttonTextCounter
+      value: 
+      objectReference: {fileID: 1760274975}
+    - target: {fileID: 3059578930195449668, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
       propertyPath: buttonSpriteRenderer
+      value: 
+      objectReference: {fileID: 92792348}
+    - target: {fileID: 3059578930195449668, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}
+      propertyPath: _buttonSpriteRenderer
       value: 
       objectReference: {fileID: 92792348}
     - target: {fileID: 4584586742171628042, guid: f4d4318bb5e3d425494838b581410c1b, type: 3}

@@ -4,66 +4,75 @@ using TMPro;
 [RequireComponent(typeof(BoxCollider2D))]
 public class ButtonBase : MonoBehaviour, ICountable
 {
-                     private BoxCollider2D boxCollider2D;
+                     private BoxCollider2D _boxCollider2D;
 
     [Header("Button Data Settings")]
-    [SerializeField] private SO_ButtonBase buttonData;
-    [SerializeField] private SpriteRenderer buttonSpriteRenderer;
-                     private Color buttonHoverColor;
-                     private Color buttonClickColor;
-    [SerializeField] private TextMeshPro buttonTextCounter;
-                     private int currentClickCount = 0;
+    [SerializeField] private SO_ButtonBase _buttonData;
+    [SerializeField] private SpriteRenderer _buttonSpriteRenderer;
+                     private Color _buttonHoverColor;
+                     private Color _buttonClickColor;
+                     private bool _isHovering = false;
+    [SerializeField] private TextMeshPro _buttonTextCounter;
+                     private int _currentClickCount = 0;
 
     // Start is called before the first frame update
     void Start() {
         // Sprite Renderer
-        if(!buttonSpriteRenderer) {
-            buttonSpriteRenderer = GetComponentInChildren(typeof(SpriteRenderer), true) as SpriteRenderer;
+        if(!_buttonSpriteRenderer) {
+            _buttonSpriteRenderer = GetComponentInChildren(typeof(SpriteRenderer), true) as SpriteRenderer;
         }
         // Set Sprite image from Scriptable Object
-        buttonSpriteRenderer.sprite = buttonData.buttonSprite;
+        _buttonSpriteRenderer.sprite = _buttonData.buttonSprite;
         // Set hover color from Scriptable Object
-        buttonHoverColor = buttonData.hoverColor;
+        _buttonHoverColor = _buttonData.hoverColor;
         // Set click color from Scriptable Object
-        buttonClickColor = buttonData.clickColor;
+        _buttonClickColor = _buttonData.clickColor;
         
         // Text Counter
-        if(!buttonTextCounter) {
-            buttonTextCounter = GetComponentInChildren(typeof(TextMeshPro), true) as TextMeshPro;
+        if(!_buttonTextCounter) {
+            _buttonTextCounter = GetComponentInChildren(typeof(TextMeshPro), true) as TextMeshPro;
         }
 
         // Disable the collider on Game Over
-        boxCollider2D = GetComponent<BoxCollider2D>();
-        boxCollider2D.enabled = true;
-        InteractionManager.Instance.OnGameOver.AddListener(() => boxCollider2D.enabled = false);
+        _boxCollider2D = GetComponent<BoxCollider2D>();
+        _boxCollider2D.enabled = true;
+        InteractionManager.Instance.OnGameOver.AddListener(() => _boxCollider2D.enabled = false);
     }
 
     void OnMouseOver() {
         // Change to hover color
-        buttonSpriteRenderer.color = buttonHoverColor;
+        if(!_isHovering) {
+            _isHovering = true;
+            _buttonSpriteRenderer.color = _buttonHoverColor;
+        }
     }
 
     void OnMouseExit() {
         // Revert to original color
-        buttonSpriteRenderer.color = Color.white;
+        _isHovering = false;
+        _buttonSpriteRenderer.color = Color.white;
     }
 
     void OnMouseDown() {
         // Change to mouseDown color
-        buttonSpriteRenderer.color = buttonClickColor;
+        _buttonSpriteRenderer.color = _buttonClickColor;
     }
 
     void OnMouseUp() {
-        // Revert to original color
-        buttonSpriteRenderer.color = Color.white;
-        // Trigger button click event
-        InteractionManager.Instance.OnButtonClick?.Invoke();
-        // Update Text counter
-        UpdateCounter();
+        if(_isHovering) {
+            // Trigger button click event
+            InteractionManager.Instance.OnButtonClick?.Invoke();
+            // Revert to original color
+            _buttonSpriteRenderer.color = _buttonData.hoverColor;
+            // Update Text counter
+            UpdateCounter();
+        } else  {
+            _buttonSpriteRenderer.color = Color.white;
+        }
     }
 
     public void UpdateCounter() {
-        currentClickCount++;
-        buttonTextCounter.text = currentClickCount.ToString();
+        _currentClickCount++;
+        _buttonTextCounter.text = _currentClickCount.ToString();
     }
 }
