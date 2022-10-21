@@ -1,8 +1,11 @@
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class ButtonBase : MonoBehaviour, ICountable
 {
+                     private BoxCollider2D boxCollider2D;
+
     [Header("Button Data Settings")]
     [SerializeField] private SO_ButtonBase buttonData;
     [SerializeField] private SpriteRenderer buttonSpriteRenderer;
@@ -28,6 +31,11 @@ public class ButtonBase : MonoBehaviour, ICountable
         if(!buttonTextCounter) {
             buttonTextCounter = GetComponentInChildren(typeof(TextMeshPro), true) as TextMeshPro;
         }
+
+        // Disable the collider on Game Over
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = true;
+        InteractionManager.Instance.OnGameOver.AddListener(() => boxCollider2D.enabled = false);
     }
 
     void OnMouseOver() {

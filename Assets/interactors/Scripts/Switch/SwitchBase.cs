@@ -2,8 +2,10 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class SwitchBase : MonoBehaviour, ICountable
 {
+                     private BoxCollider2D boxCollider2D;
     [Header("Switch Data Settings")]
     [SerializeField] private SO_SwitchBase switchData;
     [SerializeField] private SpriteRenderer switchSpriteRenderer;
@@ -23,6 +25,11 @@ public class SwitchBase : MonoBehaviour, ICountable
         }
         // Set switch sprite from Scriptable Object
         switchSpriteRenderer.sprite = switchData.switchSprite;
+
+        // Disable the collider on Game Over
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = true;
+        InteractionManager.Instance.OnGameOver.AddListener(() => boxCollider2D.enabled = false);
     }
 
     void OnMouseDown() {

@@ -49,9 +49,8 @@ public class InteractionManager : MonoBehaviour
     }
 
     private void HandleOnGameOver() {
+        totalClickCount = 0;
+        isGameOver = false;
         OnGameOver?.Invoke();
-        Debug.Log("the game is over");
-        // Throw UI screen
-        // Disable Interactive
     }
 }

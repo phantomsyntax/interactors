@@ -8,7 +8,7 @@ public class MoverBase : MonoBehaviour
     [SerializeField] private SO_MoverBase moverData;
     [SerializeField] private SpriteRenderer moverSpriteRenderer;
     [SerializeField] private Animator moverAnimator;
-                     private bool isAnimatingClockwise = true;
+                     private bool isRotatingClockwise = true;
                      private bool isRotating = false;
     [SerializeField] private float moverRotationSpeedModifier = 1;
 
@@ -40,12 +40,13 @@ public class MoverBase : MonoBehaviour
         }
     }
 
+// TODO: Fix issue where changing directions while speed is 0 causes an animation 'burp'
     private void HandleRotationDirection() {
-        if(!isAnimatingClockwise) {
-            isAnimatingClockwise = true;
+        if(!isRotatingClockwise) {
+            isRotatingClockwise = true;
             moverAnimator.SetBool("isRotatingClockwise", true);
         } else {
-            isAnimatingClockwise = false;
+            isRotatingClockwise = false;
             moverAnimator.SetBool("isRotatingClockwise", false);
         }
     }

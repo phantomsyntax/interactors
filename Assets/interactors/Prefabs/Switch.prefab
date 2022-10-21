@@ -131,6 +131,8 @@ MonoBehaviour:
   switchData: {fileID: 0}
   switchSpriteRenderer: {fileID: 0}
   switchResetDelay: 2
+  switchTextCounter: {fileID: 0}
+  swipeDistanceModifier: 0
 --- !u!61 &7721506094663959167
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -192,7 +194,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0.75, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &3137482630648975906
 MeshRenderer:

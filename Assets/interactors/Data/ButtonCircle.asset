@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ButtonCircle
   m_EditorClassIdentifier: 
   buttonSprite: {fileID: 21300000, guid: 5fed1780986bf48cb91c3f3be12ac250, type: 3}
-  hoverColor: {r: 0.31990921, g: 0.80129224, b: 0.8584906, a: 0}
-  clickColor: {r: 0.32607946, g: 0.14150944, b: 0.5660378, a: 0}
+  hoverColor: {r: 0.31990921, g: 0.80129224, b: 0.8584906, a: 1}
+  clickColor: {r: 0.32607946, g: 0.14150944, b: 0.5660378, a: 1}
