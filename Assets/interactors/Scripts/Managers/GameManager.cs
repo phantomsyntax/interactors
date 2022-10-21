@@ -4,11 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _blackScreen;
+
     public void RestartGame() {
         SceneManager.LoadScene("00_mainScene");
     }
 
     public void QuitGame() {
+        // Black Screen for end game
+        if(!_blackScreen) {
+            _blackScreen = GameObject.Find("BlackScreen");
+        }
+        _blackScreen.SetActive(true);
         StartCoroutine("ExitGameDelayed");
     }
 
