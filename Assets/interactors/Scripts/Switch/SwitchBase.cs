@@ -38,6 +38,8 @@ public class SwitchBase : MonoBehaviour, ICountable
     }
 
     void OnMouseUp() {
+        if(_isActive) return;
+        
         // TODO: break this out for a horizontal vs vertical switch
         // Check to see if user has dragged mouse up to activate the switch
         if (Input.mousePosition.y > _mouseDownVector.y + _swipeDistanceModifier) {
